@@ -5,11 +5,11 @@ plugins {
 
 val versions = providers.gradleProperty("net.labymod.minecraft-versions").get().split(";")
 
-group = "org.example"
-version = providers.environmentVariable("VERSION").getOrElse("1.0.0")
+group = "com.github.wildtooth"
+version = providers.environmentVariable("VERSION").getOrElse("0.0.1")
 
 labyMod {
-    defaultPackageName = "org.example" //change this to your main package name (used by all modules)
+    defaultPackageName = "com.github.wildtooth.extremely" //change this to your main package name (used by all modules)
 
     minecraft {
         registerVersion(versions.toTypedArray()) {
@@ -23,10 +23,10 @@ labyMod {
     }
 
     addonInfo {
-        namespace = "example"
-        displayName = "ExampleAddon"
-        author = "Example Author"
-        description = "Example Description"
+        namespace = "extremely"
+        displayName = "ExtremelyAwesome"
+        author = "Champen_V1ldtand"
+        description = "An extremely awesome addon"
         minecraftVersion = "*"
         version = rootProject.version.toString()
     }
