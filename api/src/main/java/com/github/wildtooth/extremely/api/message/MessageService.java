@@ -1,5 +1,6 @@
 package com.github.wildtooth.extremely.api.message;
 
+import com.github.wildtooth.extremely.api.Service;
 import com.github.wildtooth.extremely.api.enums.MessageType;
 import net.labymod.api.reference.annotation.Referenceable;
 import java.util.Collection;
@@ -7,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 @Referenceable
-public interface MessageService {
+public interface MessageService extends Service {
 
   /**
    * Tilføjer et pattern ved hjælp af en string.
