@@ -12,9 +12,14 @@ public class MessageRecognizedListener {
   @Subscribe
   public void onMessageRecognized(MessageRecognizedEvent event) {
     switch (event.getType()) {
-      case PUT_ALL:
+      case TRANSPORTER_PUT_ALL:
         putAll(event.getMatcher());
         break;
+      case TRANSPORTER_GET:
+        break;
+      case TRANSPORTER_PUT:
+        break;
+      case TRANSPORTER_LIST_ALL:
     }
   }
 
@@ -23,6 +28,20 @@ public class MessageRecognizedListener {
     int amount = Integer.parseInt(matcher.group(2));
     int totalAmount = Integer.parseInt(matcher.group(4));
     this.transporter.setAmount(item, totalAmount);
+  }
+
+  private void get(Matcher matcher) {
+
+  }
+
+  private void put(Matcher matcher) {
+
+  }
+
+  private void listAll(Matcher matcher) {
+    String item = parseItemToTransportableID(matcher.group(1));
+    int amount = Integer.parseInt(matcher.group(2));
+    this.transporter.setAmount(item, amount);
   }
 
   private String parseItemToTransportableID(String item) {
