@@ -9,5 +9,22 @@ public enum MessageType {
   MONEY_BALANCE,
   MONEY_SEND,
   MONEY_RECEIVE,
-  ;
+
+  SERVER_CONNECTED,
+
+  UNKNOWN;
+
+  public static MessageType of(String name) {
+    MessageType type = null;
+    try {
+      type = MessageType.valueOf(name.toUpperCase());
+    } catch (IllegalArgumentException e) {
+      type = MessageType.UNKNOWN;
+    } finally {
+      if (type == null) {
+        type = MessageType.UNKNOWN;
+      }
+    }
+    return type;
+  }
 }

@@ -34,16 +34,20 @@ public class DefaultMessageService implements MessageService {
         MessageType.TRANSPORTER_LIST_ALL,
         Pattern.compile("^\\[Money\\] Balance: ([0-9]+([,.][0-9]+)*) Emeralds$"),
         MessageType.MONEY_BALANCE,
-        Pattern.compile("^\\[Money\\] Du har sendt ([0-9]+([,.][0-9]+)*) Emerald to ([a-zA-Z0-9_]{2,16})$"),
-        MessageType.MONEY_SEND
+        Pattern.compile("^\\[Money\\] Du har sendt ([0-9]+([,.][0-9]+)*) Emerald to ([a-zA-Z0-9_]{2,16})\\.$"),
+        MessageType.MONEY_SEND,
+        Pattern.compile("^\\[Money\\] ([a-zA-Z0-9_]{2,16}) har sendt dig ([0-9]+([,.][0-9]+)*) Emerald\\.$"),
+        MessageType.MONEY_RECEIVE,
+        Pattern.compile("^Du er lige nu forbundet til ([a-z]+), brug \\/server <navn> for at joine en anden server\\.$"),
+        MessageType.SERVER_CONNECTED
     );
   }
 
   @Override
   public void load() {
-    ArrayList<String[]> messages = DataUtil.csv("", true, "=====");
+    ArrayList<String[]> messages = DataUtil.csv("", true, "==!==");
     for (String[] message : messages) {
-      addMessagePattern(message[0], MessageType.valueOf(message[1].toUpperCase()));
+      addMessagePattern(message[0], MessageType.of(message[1]));
     }
   }
 }

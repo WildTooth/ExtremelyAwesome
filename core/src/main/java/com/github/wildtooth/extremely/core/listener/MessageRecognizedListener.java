@@ -16,10 +16,14 @@ public class MessageRecognizedListener {
         putAll(event.getMatcher());
         break;
       case TRANSPORTER_GET:
+        get(event.getMatcher());
         break;
       case TRANSPORTER_PUT:
+        put(event.getMatcher());
         break;
       case TRANSPORTER_LIST_ALL:
+        listAll(event.getMatcher());
+        break;
     }
   }
 
