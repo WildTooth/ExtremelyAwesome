@@ -1,5 +1,6 @@
 package com.github.wildtooth.extremely.core.transporter;
 
+import com.github.wildtooth.extremely.api.transportable.Transportable;
 import com.github.wildtooth.extremely.api.transportable.TransportableService;
 import com.github.wildtooth.extremely.api.transporter.Transporter;
 import net.labymod.api.models.Implements;
@@ -34,7 +35,17 @@ public class DefaultTransporter implements Transporter {
   }
 
   @Override
+  public double calculateTotalValue() {
+    double totalValue = 0;
+    for (String transportableId : this.transporter.keySet()) {
+      Transportable transportable = this.transportableService.getTransportable(transportableId).orElseGet(null);
+      totalValue += transportable.getPricePoint() * getAmount(transportableId);
+    }
+    return totalValue;
+  }
+
+  @Override
   public void load() {
-    
+
   }
 }

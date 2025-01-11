@@ -14,4 +14,6 @@ public interface Transporter extends Service {
   void clearTransporter();
 
   void setTransportableService(TransportableService transportableService);
+
+  double calculateTotalValue();
 }
